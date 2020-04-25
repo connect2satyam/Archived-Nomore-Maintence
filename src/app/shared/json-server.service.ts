@@ -10,7 +10,7 @@ import * as importData from 'src/db/db.json';
   providedIn: 'root'
 })
 export class JsonServerService {
- // URL = 'https://5d1760a48060b10014297b02.mockapi.io/api/v1/';
+  // URL = 'https://5d1760a48060b10014297b02.mockapi.io/api/v1/';
   constructor(private httClient: HttpClient) {
   }
 
@@ -42,7 +42,8 @@ export class JsonServerService {
     this.getEvents$,
     this.eventAction$
   ]).pipe(
-    map(([events, eventName]) => events.filter(x => eventName ? x.eventName.includes(eventName) : true)
+    map(([events, eventName]) => events.filter(x => eventName ? x.eventName.toLocaleLowerCase()
+      .includes(eventName.toLocaleLowerCase()) : true)
     ));
 
   selectedEvent(eventModel: EventModel) {
