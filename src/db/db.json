@@ -1,0 +1,136 @@
+{
+    "customers": [{
+            "id": 1000,
+            "name": "Satya"
+        },
+        {
+            "id": 1001,
+            "name": "Satyanarayana"
+        },
+        {
+            "id": 1002,
+            "name": "Satyanarayana Devi"
+        }
+    ],
+    "orders": [{
+            "oid": 9000,
+            "name": "Gold",
+            "cid": 1000
+        },
+        {
+            "oid": 9001,
+            "name": "Silver",
+            "cid": 1000
+        },
+        {
+            "oid": 9002,
+            "name": "Copper",
+            "cid": 1001
+        },
+        {
+            "oid": 9003,
+            "name": "Metal",
+            "cid": 1002
+        }
+    ],
+    "events": [{
+            "id": "1000",
+            "eventName": "Satya demo 1",
+            "eventDate": "2020-07-12T08:20:05.135Z",
+            "availableSeats": 0,
+            "imageUrl": "./assets/images/10000.jpg"
+        },
+        {
+            "id": "2000",
+            "eventName": "Satya demo 2",
+            "eventDate": "2023-04-30T09:18:15.910Z",
+            "availableSeats": 12,
+            "imageUrl": "./assets/images/10001.jpg"
+        },
+        {
+            "id": "3000",
+            "eventName": "Satya demo 3",
+            "eventDate": "2023-11-04T04:30:41.209Z",
+            "availableSeats": 0,
+            "imageUrl": "./assets/images/10002.jpg"
+        },
+        {
+            "id": "4000",
+            "eventName": "Satya demo 4",
+            "eventDate": "2023-11-28T04:43:54.142Z",
+            "availableSeats": 10,
+            "imageUrl": "./assets/images/10003.jpg"
+        },
+        {
+            "id": "5000",
+            "eventName": "Satya demo 5",
+            "eventDate": "2023-09-10T21:37:28.014Z",
+            "availableSeats": 15,
+            "imageUrl": "./assets/images/10004.jpg"
+        },
+        {
+            "id": "6000",
+            "eventName": "Satya demo 6",
+            "eventDate": "2025-11-30T01:11:02.309Z",
+            "availableSeats": 0,
+            "imageUrl": "./assets/images/10005.jpg"
+        },
+        {
+            "id": "7000",
+            "eventName": "Satya demo 7",
+            "eventDate": "2024-02-09T02:43:36.027Z",
+            "availableSeats": 5,
+            "imageUrl": "./assets/images/10006.jpg"
+        },
+        {
+            "id": "8000",
+            "eventName": "Satya demo 8",
+            "eventDate": "2022-12-27T11:11:01.631Z",
+            "availableSeats": 2,
+            "imageUrl": "./assets/images/10007.jpg"
+        },
+        {
+            "id": "9000",
+            "eventName": "Satya demo 9",
+            "eventDate": "2026-12-04T13:42:20.135Z",
+            "availableSeats": 4,
+            "imageUrl": "./assets/images/10008.jpg"
+        },
+        {
+            "id": "1000",
+            "eventName": "Satya demo 10",
+            "eventDate": "2022-06-09T10:54:58.341Z",
+            "availableSeats": 3,
+            "imageUrl": "./assets/images/10009.jpg"
+        },
+        {
+            "id": "1100",
+            "eventName": "Satya demo 11",
+            "eventDate": "2015-07-28T00:05:32.393Z",
+            "availableSeats": 40,
+            "imageUrl": "./assets/images/10010.jpg"
+        },
+        {
+            "id": "1200",
+            "eventName": "Satya demo 12",
+            "eventDate": "2022-07-06T05:26:23.724Z",
+            "totalSeats": 45,
+            "availableSeats": 35,
+            "imageUrl": "./assets/images/10011.jpg"
+        },
+        {
+            "id": "1300",
+            "eventName": "Satya demo 13",
+            "eventDate": "2020-12-06T12:17:31.978Z",
+            "availableSeats": 4,
+            "imageUrl": "./assets/images/10012.jpg"
+        },
+        {
+            "id": "1400",
+            "eventName": "Satya demo 14",
+            "eventDate": "2023-08-30T07:13:31.807Z",
+            "availableSeats": 0,
+            "imageUrl": "./assets/images/10013.jpg"
+        }
+    ]
+}

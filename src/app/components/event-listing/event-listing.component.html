@@ -1,0 +1,46 @@
+<div class='container main-content'>
+    <div class="card bg-light mb-3">
+        <div class="card-header">
+            Event Listing
+        </div>
+        <div class="card-body">
+            <form [formGroup]='formGroup' class="needs-validation">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <input type="text" class="form-control" formControlName="eventName" placeholder="SEARCH EVENTS" />
+                    </div>
+                </div>
+                <fieldset class="fieldset-class">
+                    <div class="form-group row" *ngIf='getEvents$ | async as events'>
+                        <div class="col-md-3 col-sm-6" *ngFor="let event of events">
+                            <div class="card">
+                                <div class="card-header">
+                                    <p class="event-data">Name : {{event.eventName}}</p>
+                                </div>
+                                <div class="card-body">
+
+                                    <p class="event-data">Id : {{event.id}}</p>
+                                    <p class="event-data">Date : {{event.eventDate | date:'medium'}}</p>
+                                    <p class="event-data">Available Seats : {{event.availableSeats}}
+                                        <span class="badge badge-primary"><button class="btn btn-primary" [disabled]="!event.availableSeats" (click)="selectedEvent(event)">{{event.availableSeats?'Book Now':'Sold Out'}}</button></span>
+                                    </p>
+                                    <img class="img-thumbnail" [src]="event?.imageUrl" alt="Card image">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6" *ngIf="events.length === 0">
+                            <div class="card">
+                                <div class="card-header">
+                                    <p>No results found!</p>
+                                </div>
+                                <div class="card-body">
+                                    <img class="img-thumbnail" src="./assets/images/No-results-found.jpg" alt="Card image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

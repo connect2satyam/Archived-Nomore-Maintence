@@ -1,0 +1,95 @@
+<div class="card" *ngIf="selectedEvent$ | async as event">
+    <div class="card-header">
+        <h3>{{event.eventName}}</h3>
+    </div>
+    <div class="card-title">
+        <span> Number of available seats : {{event.availableSeats}}</span>
+    </div>
+
+    <div class="card-body">
+        <form novalidate [formGroup]="bookingForm">
+            <div class="form-group row mb-2">
+                <label class="col-md-2 col-form-label" for="userName">Name</label>
+                <div class="col-md-8">
+                    <input class="form-control" id="userName" type="text" placeholder="User Name (required)" formControlName="userName" [ngClass]="{'is-invalid': (bookingForm.get('userName').touched ||
+                                            bookingForm.get('userName').dirty) &&
+                                            !bookingForm.get('userName').valid }" />
+                    <span class="invalid-feedback">
+                        <satyas-error-message [control]="bookingForm.get('userName')"></satyas-error-message>
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label class="col-md-2 col-form-label" for="email">Email</label>
+                <div class="col-md-8">
+                    <input class="form-control" id="email" type="email" placeholder="Email (required)" formControlName="email" [ngClass]="{'is-invalid': (bookingForm.get('email').touched ||
+                                            bookingForm.get('email').dirty) &&
+                                            !bookingForm.get('email').valid }" />
+                    <span class="invalid-feedback">
+                        <satyas-error-message [control]="bookingForm.get('email')"></satyas-error-message>
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label class="col-md-2 col-form-label" for="phoneId">Phone Number</label>
+                <div class="col-md-8">
+                    <input class="form-control" id="phoneId" type="tel" placeholder="Phone" formControlName="phone" [ngClass]="{'is-invalid': (bookingForm.get('phone').touched ||
+                    bookingForm.get('phone').dirty) &&
+                    !bookingForm.get('phone').valid }" />
+                    <span class="invalid-feedback">
+                        <satyas-error-message [control]="bookingForm.get('phone')"></satyas-error-message>
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label class="col-md-2 col-form-label" for="noOfSeats">No. of Seats</label>
+                <div class="col-md-8">
+                    <select class="form-control" id="noOfSeats" formControlName="noOfSeats" (change)="addAttendees($event.target.value)" [ngClass]="{'is-invalid': (bookingForm.get('noOfSeats').touched ||
+                    bookingForm.get('noOfSeats').dirty) &&
+                    !bookingForm.get('noOfSeats').valid }">
+                        <option value="0" disabled>- Select Attendees -</option>
+                        <option *ngFor="let seat of noOfSeats" [value]="seat">{{ seat }}</option>
+                    </select>
+                    <span class="invalid-feedback">
+                        <satyas-error-message [control]="bookingForm.get('noOfSeats')"></satyas-error-message>
+                    </span>
+                </div>
+            </div>
+            <div>
+                <div formArrayName="attendees">
+                    <div [formGroupName]="i" *ngFor="let currentAttendee of attendees.controls; let i=index">
+                        <div class="form-group row mb-2">
+                            <label class="col-md-2 col-form-label pt-2" for="{{getName(i)}}">{{getName(i)}}</label>
+                            <div class="col-md-8">
+                                <input class="form-control" id="{{getName(i)}}" type="text" placeholder="{{getName(i)}} (required)" formControlName="attendee" [ngClass]="{'is-invalid': (currentAttendee.controls.attendee.touched || 
+                                currentAttendee.controls.attendee.dirty) && 
+                                                  !currentAttendee.controls.attendee.valid }">
+                                <span class="invalid-feedback">
+                                    <satyas-error-message [control]="currentAttendee.get('attendee')" [counter]="i+1">
+                                    </satyas-error-message>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <div class="offset-md-2 col-md-4">
+                    <button class="btn btn-primary mr-3" (click)="submit()" type="submit" style="width:80px" [title]="bookingForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'" [disabled]="bookingForm.invalid || isDataSubmitted">
+                        Submit
+                    </button>
+                </div>
+                <div class="col-md-4" style="text-align: end;">
+                    <button class="btn btn-danger" type="submit" (click)="cancel()" style="width:80px" [title]="isDataSubmitted ? 'No action now' : 'Go to event list page'" [disabled]="isDataSubmitted">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<br>Booking form values are : {{ bookingForm.value | json }}
