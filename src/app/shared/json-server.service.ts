@@ -1,15 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, combineLatest, of } from 'rxjs';
+import { BehaviorSubject, combineLatest, of, Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { EventModel } from './event.model';
+
+import * as importData from 'src/db/db.json';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JsonServerService {
-  URL = 'https://5d1760a48060b10014297b02.mockapi.io/api/v1/';
-  constructor(private httClient: HttpClient) { }
+ // URL = 'https://5d1760a48060b10014297b02.mockapi.io/api/v1/';
+  constructor(private httClient: HttpClient) {
+  }
 
   eventModel: EventModel = {
     id: 1000,
@@ -27,7 +30,13 @@ export class JsonServerService {
 
   noOfSeats$ = of(1, 2, 3, 4, 5, 6);
 
-  getEvents$ = this.httClient.get<EventModel[]>(this.URL + 'events');
+  getEvents$ = of(importData.events).pipe(map(tempEvents => tempEvents.map(event => ({
+    id: +event.id,
+    eventName: event.eventName,
+    eventDate: event.eventDate,
+    availableSeats: event.availableSeats,
+    imageUrl: event.imageUrl
+  } as EventModel))));
 
   getEventsFilterByEventName$ = combineLatest([
     this.getEvents$,

@@ -20,7 +20,6 @@ export class EventListingComponent implements OnInit {
   constructor(private jsonServerService: JsonServerService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
-
     this.formGroup.get('eventName').valueChanges.subscribe((inputText: string) => {
       this.jsonServerService.eventSearch(inputText);
     });

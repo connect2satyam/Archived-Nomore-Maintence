@@ -1,38 +1,4 @@
 {
-    "customers": [{
-            "id": 1000,
-            "name": "Satya"
-        },
-        {
-            "id": 1001,
-            "name": "Satyanarayana"
-        },
-        {
-            "id": 1002,
-            "name": "Satyanarayana Devi"
-        }
-    ],
-    "orders": [{
-            "oid": 9000,
-            "name": "Gold",
-            "cid": 1000
-        },
-        {
-            "oid": 9001,
-            "name": "Silver",
-            "cid": 1000
-        },
-        {
-            "oid": 9002,
-            "name": "Copper",
-            "cid": 1001
-        },
-        {
-            "oid": 9003,
-            "name": "Metal",
-            "cid": 1002
-        }
-    ],
     "events": [{
             "id": "1000",
             "eventName": "Satya demo 1",
@@ -114,7 +80,6 @@
             "id": "1200",
             "eventName": "Satya demo 12",
             "eventDate": "2022-07-06T05:26:23.724Z",
-            "totalSeats": 45,
             "availableSeats": 35,
             "imageUrl": "./assets/images/10011.jpg"
         },
