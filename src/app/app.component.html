@@ -1,15 +1,9 @@
-<!-- <satyas-nav-component></satyas-nav-component>
-
-<div class="container main-content">
-    <router-outlet></router-outlet>
-</div> -->
-
-<app-navbar (eventoNavbar)="toggle()"></app-navbar>
+<satyas-navbar (eventoNavbar)="toggle()"></satyas-navbar>
 <div id="wrapper">
-    <app-sidebar></app-sidebar>
+    <satyas-sidebar></satyas-sidebar>
     <div id="content">
         <router-outlet></router-outlet>
     </div>
 </div>
 
-<app-footer></app-footer>
+<satyas-footer></satyas-footer>
