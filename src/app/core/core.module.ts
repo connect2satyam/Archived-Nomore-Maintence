@@ -7,18 +7,13 @@ import { RouterModule } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { Tela1Component } from '../telas/tela1/tela1.component';
-import { Tela2Component } from '../telas/tela2/tela2.component';
-import { Tela3Component } from '../telas/tela3/tela3.component';
+
 
 
 @NgModule({
   declarations: [
     SidebarComponent,
     NavbarComponent,
-    Tela1Component,
-    Tela2Component,
-    Tela3Component,
     FooterComponent
   ],
   imports: [
