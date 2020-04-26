@@ -11,6 +11,8 @@ import { EventListingComponent } from './components/event-listing/event-listing.
 import { NavComponentComponent } from './components/nav-component/nav-component.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { CoreModule } from './core/core.module';
+import { TelasRoutingModule } from './telas/telas-routing.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
+    CoreModule,
+    TelasRoutingModule,
     ToastrModule.forRoot()
   ],
   providers: [],

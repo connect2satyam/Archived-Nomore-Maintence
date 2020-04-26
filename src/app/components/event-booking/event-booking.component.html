@@ -79,12 +79,12 @@
 
             <div class="form-group row mb-2">
                 <div class="offset-md-2 col-md-4">
-                    <button class="btn btn-primary mr-3" (click)="submit()" type="submit" style="width:80px" [title]="bookingForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'" [disabled]="bookingForm.invalid || isDataSubmitted">
+                    <button class="btn btn-primary mr-3" (click)="submit()" type="submit" [title]="bookingForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'" [disabled]="bookingForm.invalid || isDataSubmitted">
                         Submit
                     </button>
                 </div>
                 <div class="col-md-4" style="text-align: end;">
-                    <button class="btn btn-danger" type="submit" (click)="cancel()" style="width:80px" [title]="isDataSubmitted ? 'No action now' : 'Go to event list page'" [disabled]="isDataSubmitted">
+                    <button class="btn btn-danger" type="submit" (click)="cancel()" [title]="isDataSubmitted ? 'No action now' : 'Go to event list page'" [disabled]="isDataSubmitted">
                         Cancel
                     </button>
                 </div>
