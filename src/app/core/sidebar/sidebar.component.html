@@ -9,13 +9,13 @@
             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <i class="fa fa-home"></i> Home
             </a>
-            <ul class="collapse list-unstyled" id="homeSubmenu">
+            <ul class="collapse list-unstyled" id="homeSubmenu" *ngIf="isUserLogged">
                 <li>
                     <a class="nav-link" routerLinkActive="active" [routerLink]="['/event-listing']">Event Listing</a>
                 </li>
-                <li>
+                <!-- <li>
                     <a class="nav-link" routerLinkActive="active" [routerLink]="['/event-booking']">Event Booking</a>
-                </li>
+                </li> -->
             </ul>
         </li>
         <li>
@@ -25,13 +25,13 @@
             <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <i class="fa fa-copy"></i> Pages
             </a>
-            <ul class="collapse list-unstyled" id="pageSubmenu">
+            <ul class="collapse list-unstyled" id="pageSubmenu" *ngIf="isUserLogged">
                 <li>
                     <a class="nav-link" routerLinkActive="active" [routerLink]="['/event-listing']">Event Listing</a>
                 </li>
-                <li>
-                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/event-booking']">Event Listing</a>
-                </li>
+                <!-- <li>
+                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/event-booking']">Event Booking</a>
+                </li> -->
             </ul>
         </li>
     </ul>
