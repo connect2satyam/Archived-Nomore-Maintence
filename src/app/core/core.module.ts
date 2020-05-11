@@ -7,6 +7,8 @@ import { RouterModule } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { LoginComponent } from './login/login.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 
 
@@ -14,7 +16,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   declarations: [
     SidebarComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent,
+    WelcomeComponent
   ],
   imports: [
     CommonModule,
@@ -23,6 +27,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     FormsModule,
     BrowserAnimationsModule
   ],
-  exports: [FooterComponent, SidebarComponent, NavbarComponent]
+  exports: [FooterComponent, SidebarComponent, NavbarComponent, LoginComponent, WelcomeComponent]
 })
 export class CoreModule {}

@@ -12,7 +12,20 @@
         </div>
 
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <ul class="navbar-nav navbar-right">
+            <li class="nav-item" *ngIf="isUserLogged">
+                <a class="nav-link">Welcome <strong>{{userName}}</strong></a>
+            </li>
+            <li class="nav-item" *ngIf="!isUserLogged">
+                <a class="nav-link" routerLink='/login'>Log In</a>
+            </li>
+            <li class="nav-item" *ngIf="isUserLogged">
+                <a class="nav-link" (click)="logOut()" style="cursor: pointer">Log Out</a>
+            </li>
+        </ul>
+
+        <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" routerLinkActive="active" [routerLink]="['/event-listing']">Event Listing</a>
@@ -21,6 +34,6 @@
                     <a class="nav-link" routerLinkActive="active" [routerLink]="['/event-booking']">Event Booking</a>
                 </li>
             </ul>
-        </div>
+        </div> -->
     </div>
 </nav>
