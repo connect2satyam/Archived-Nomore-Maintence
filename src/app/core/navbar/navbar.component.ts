@@ -5,10 +5,18 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   constructor() {}
-
   @Output() eventoNavbar = new EventEmitter();
+  dateTime: Date;
+
+  ngOnInit(): void {
+    setInterval(() => {
+      this.dateTime = new Date();
+    }, 1000);
+  }
+
+
 
   toggleMenu() {
     this.eventoNavbar.emit();
