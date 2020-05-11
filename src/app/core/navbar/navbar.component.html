@@ -11,7 +11,14 @@
             <p>{{dateTime | date:'medium'}}</p>
         </div>
 
-
+        <ul class="navbar-nav navbar-right">
+            <li class="nav-item">
+                <select class="form-control" (change)='onSelected($event.target.value)'>
+                    <option disabled selected value=''>Select Theme</option>
+                    <option *ngFor='let theme of themes' [value]='theme'>{{theme}}</option>
+                </select>
+            </li>
+        </ul>
 
         <ul class="navbar-nav navbar-right">
             <li class="nav-item" *ngIf="isUserLogged">
