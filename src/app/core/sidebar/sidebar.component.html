@@ -6,22 +6,19 @@
 
     <ul class="list-unstyled components">
         <li class="active">
+            <a routerLinkActive="active" [routerLink]="['/']">
+                <i class="fa fa-briefcase"></i> Home
+            </a>
+        </li>
+        <li>
             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                <i class="fa fa-home"></i> Home
+                <i class="fa fa-home"></i> Components
             </a>
             <ul class="collapse list-unstyled" id="homeSubmenu" *ngIf="isUserLogged">
                 <li>
                     <a class="nav-link" routerLinkActive="active" [routerLink]="['/event-listing']">Event Listing</a>
                 </li>
-                <!-- <li>
-                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/event-booking']">Event Booking</a>
-                </li> -->
             </ul>
-        </li>
-        <li>
-            <a href="#">
-                <i class="fa fa-briefcase"></i> About
-            </a>
             <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <i class="fa fa-copy"></i> Pages
             </a>

@@ -23,7 +23,7 @@ export class EventListingComponent implements OnInit {
     this.formGroup.get('eventName').valueChanges.subscribe((inputText: string) => {
       this.jsonServerService.eventSearch(inputText);
     });
-
+    this.jsonServerService.eventSearch(null);
     this.getEvents$ = this.jsonServerService.getEventsFilterByEventName$;
   }
 

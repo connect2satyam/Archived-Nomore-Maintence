@@ -22,7 +22,7 @@ export class JsonServerService {
     imageUrl: './assets/images/10000.jpg'
   };
 
-  private eventSubject = new BehaviorSubject<string>('');
+  private eventSubject = new BehaviorSubject<string>(null);
   eventAction$ = this.eventSubject.asObservable();
 
   private selectedEventSubject = new BehaviorSubject<EventModel>(this.eventModel);
