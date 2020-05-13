@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { User } from './user.model';
 import { BehaviorSubject, Observable, of, from, throwError } from 'rxjs';
 import { map, tap, catchError } from 'rxjs/operators';
+import { AuthService as SocialAuthService } from 'angularx-social-login';
+import { SocialUser } from 'angularx-social-login';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,9 @@ export class AuthService {
   private isUserLoggedIn = new BehaviorSubject<User>(this.currentUser);
   isUserLoggedInAction$ = this.isUserLoggedIn.asObservable();
 
-  constructor() { }
+  constructor(private authService: SocialAuthService) { }
+
+  socialUser$ = this.authService.authState;
 
   // Below messages must be from API.
   message$ = from(['satya', 'lakshmi', 'sindhu',
@@ -39,9 +43,10 @@ export class AuthService {
   }
 
   logout(): void {
+    this.authService.signOut();
     this.getOnlineStatus.next(false);
-    console.error(`User ${this.currentUser.userName} is offline and logged out`);
-    this.currentUser = undefined;
-    this.isUserLoggedIn.next(this.currentUser);
+    // console.error(`User ${this.currentUser.userName} is offline and logged out`);
+    // this.currentUser = undefined;
+    // this.isUserLoggedIn.next(this.currentUser);
   }
 }

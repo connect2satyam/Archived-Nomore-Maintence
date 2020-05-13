@@ -1,7 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/shared/auth.service';
+import { AuthService as LocalAuthService } from 'src/app/shared/auth.service';
+import { AuthService } from 'angularx-social-login';
+import { FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
+
 
 @Component({
   selector: 'satyas-login',
@@ -13,10 +16,28 @@ export class LoginComponent implements OnInit, OnDestroy {
   errorMessage: string;
   componentActive = true;
 
-  constructor( private authService: AuthService,
-               private router: Router) { }
+  constructor(
+    private localAuthService: LocalAuthService,
+    private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  signInWithGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(x => {
+      const res = x;
+      this.router.navigate(['/event-listing']);
+    });
+
+  }
+
+  signInWithFB(): void {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  }
+
+  signOut(): void {
+    this.authService.signOut();
   }
 
   ngOnDestroy(): void {
@@ -31,10 +52,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (loginForm && loginForm.valid) {
       const userName = loginForm.form.value.userName;
       const password = loginForm.form.value.password;
-      this.authService.login(userName, password);
+      this.localAuthService.login(userName, password);
 
-      if (this.authService.redirectUrl) {
-        this.router.navigateByUrl(this.authService.redirectUrl);
+      if (this.localAuthService.redirectUrl) {
+        this.router.navigateByUrl(this.localAuthService.redirectUrl);
       } else {
         this.router.navigate(['/event-listing']);
       }

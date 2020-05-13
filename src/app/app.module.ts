@@ -12,6 +12,24 @@ import { EventBookingComponent } from './components/event-booking/event-booking.
 import { EventListingComponent } from './components/event-listing/event-listing.component';
 import { CoreModule } from './core/core.module';
 
+import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
+
+const config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider('640341226215-pop3u1drhhlovipu3v5fcrp0mc69f965.apps.googleusercontent.com')
+  }
+  // ,{
+  //   id: FacebookLoginProvider.PROVIDER_ID,
+  //   provider: new FacebookLoginProvider('Facebook-App-Id')
+  // }
+]);
+
+export function provideConfig() {
+  return config;
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,9 +46,13 @@ import { CoreModule } from './core/core.module';
     FontAwesomeModule,
     BrowserAnimationsModule,
     CoreModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    SocialLoginModule
   ],
-  providers: [],
+  providers: [{
+    provide: AuthServiceConfig,
+    useFactory: provideConfig
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

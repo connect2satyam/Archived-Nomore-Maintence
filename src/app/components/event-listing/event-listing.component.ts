@@ -4,6 +4,8 @@ import { FormBuilder, FormControl } from '@angular/forms';
 import { JsonServerService } from 'src/app/shared/json-server.service';
 import { EventModel } from 'src/app/shared/event.model';
 import { Router } from '@angular/router';
+import { SocialUser } from 'angularx-social-login';
+import { AuthService } from 'src/app/shared/auth.service';
 
 @Component({
   selector: 'satyas-event-listing',
@@ -16,8 +18,15 @@ export class EventListingComponent implements OnInit {
   formGroup = this.fb.group({
     eventName: ['']
   });
+  private socialUser$: Observable<SocialUser>;
+  private loggedIn: boolean;
 
-  constructor(private jsonServerService: JsonServerService, private fb: FormBuilder, private router: Router) { }
+  constructor(
+    private jsonServerService: JsonServerService,
+    private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
     this.formGroup.get('eventName').valueChanges.subscribe((inputText: string) => {
@@ -25,6 +34,9 @@ export class EventListingComponent implements OnInit {
     });
     this.jsonServerService.eventSearch(null);
     this.getEvents$ = this.jsonServerService.getEventsFilterByEventName$;
+
+    this.socialUser$ = this.authService.socialUser$;
+
   }
 
   selectedEvent(selectedEvent: EventModel) {
