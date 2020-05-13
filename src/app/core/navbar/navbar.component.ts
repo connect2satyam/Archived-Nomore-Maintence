@@ -12,7 +12,7 @@ import { SocialUser } from 'angularx-social-login';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   // private socialUser$: Observable<SocialUser>;
-  private socialUser: SocialUser;
+  socialUser: SocialUser;
   isUserLogged = false;
 
   constructor(private router: Router, private authService: AuthService, private themeService: ThemeService) { }

@@ -14,11 +14,14 @@ import { CoreModule } from './core/core.module';
 
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
+import { environment } from 'src/environments/environment';
 
+// 640341226215-pop3u1drhhlovipu3v5fcrp0mc69f965.apps.googleusercontent.com   -- local
+// 640341226215-7amo9e4l6eutu5qjat23kd6lbajvtrk4.apps.googleusercontent.com   -- firbase
 const config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider('640341226215-pop3u1drhhlovipu3v5fcrp0mc69f965.apps.googleusercontent.com')
+    provider: new GoogleLoginProvider(environment.googleAPIProviderID)
   }
   // ,{
   //   id: FacebookLoginProvider.PROVIDER_ID,
