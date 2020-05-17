@@ -25,8 +25,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     this.loginForm = this.formBuilder.group({
       userName: ['', ValidationService.nameValidation],
       userEmail: ['', ValidationService.emailValidation],
-      userPwd: ['', Validators.compose([Validators.minLength(4), ValidationService.passwordValidation])],
-      userConfirmPwd: ['', Validators.compose([Validators.minLength(4), ValidationService.passwordValidation])],
+      userPwd: ['', ValidationService.passwordValidation],
+      userConfirmPwd: ['', ValidationService.passwordValidation]
     });
   }
   registration() {

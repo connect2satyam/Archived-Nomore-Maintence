@@ -11,6 +11,7 @@ export class ValidationService {
             nameOfAttendeeRequired: `Please enter the name of Attendee ${counter > 1 ? counter : ''}`,
             userNameRequired: 'Please enter your name',
             userPasswordRequired: 'Please enter your password',
+            invalidPasswordMinLength: 'Password must be between 4 & 8 characters',
             invalidPassword: 'Please enter valid password only small letters (TODO)',
             invalidName: 'Only letters and spaces are allowed',
             emailRequired: 'Please enter your email',
@@ -56,10 +57,11 @@ export class ValidationService {
         if (isNullOrUndefined(control.value) || control.value === '') {
             return null;
         }
-        if (control.value.match(/[a-z]$/)) {
+        if (control.value.match(/^[a-zA-Z]{4,8}$/)) {
+            // https://www.sitepoint.com/using-regular-expressions-to-check-string-length/
             return null;
         } else {
-            return { invalidPassword: true };
+            return { invalidPasswordMinLength: true };
         }
     }
 
