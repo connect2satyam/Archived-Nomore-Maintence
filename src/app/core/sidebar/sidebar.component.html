@@ -1,7 +1,7 @@
 <nav id="sidebar">
     <div class="sidebar-header">
         <h3>SatyaS</h3>
-        <img class="photo-style" [src]="socialUser?.photoUrl">
+        <img class="photo-style" [src]="getImageURL()" *ngIf="isUserLogged">
         <strong>SN</strong>
     </div>
 
@@ -11,7 +11,7 @@
                 <i class="fa fa-briefcase"></i> Home
             </a>
         </li>
-        <li>
+        <li *ngIf="isUserLogged">
             <!-- <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <i class="fa fa-home"></i> Components
             </a>
@@ -23,7 +23,7 @@
             <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <i class="fa fa-copy"></i> Pages
             </a>
-            <ul class="collapse list-unstyled" id="pageSubmenu" *ngIf="isUserLogged">
+            <ul class="collapse list-unstyled" id="pageSubmenu">
                 <li>
                     <a class="nav-link" routerLinkActive="active" [routerLink]="['/event-listing']">Event Listing</a>
                 </li>

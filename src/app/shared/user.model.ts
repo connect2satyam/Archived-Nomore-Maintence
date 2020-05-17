@@ -2,6 +2,7 @@ export interface User {
     userName: string;
     isSocialLogin: boolean;
     isUserLoggedIn: boolean;
+    photoUrl: string;
 }
 
 export interface UserModel {

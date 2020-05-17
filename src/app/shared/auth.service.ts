@@ -33,7 +33,8 @@ export class AuthService {
     this.currentUserModel = {
       userName: loginFormValues?.userName,
       isSocialLogin: false,
-      isUserLoggedIn: true
+      isUserLoggedIn: true,
+      photoUrl: './assets/images/Satyanarayana_Devi.jpg'
     };
 
     this.currentUser.next(this.currentUserModel);
@@ -48,7 +49,8 @@ export class AuthService {
         this.currentUserModel = socialUser ? {
           userName: socialUser.firstName,
           isSocialLogin: true,
-          isUserLoggedIn: true
+          isUserLoggedIn: true,
+          photoUrl: socialUser.photoUrl
         } : null;
         this.currentUser.next(this.currentUserModel);
       });
