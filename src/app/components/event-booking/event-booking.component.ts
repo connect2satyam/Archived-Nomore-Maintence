@@ -30,20 +30,20 @@ export class EventBookingComponent implements OnInit, OnDestroy {
 
   constructor(
     private jsonServerService: JsonServerService,
-    private fb: FormBuilder,
+    private formBuilder: FormBuilder,
     private router: Router,
     private toastr: ToastrService) { }
 
 
   ngOnInit(): void {
-    this.bookingForm = this.fb.group({
+    this.bookingForm = this.formBuilder.group({
       eventName: ['', []],
       availableSeats: ['', []],
       userName: ['', ValidationService.nameValidation],
       email: ['', ValidationService.emailValidation],
       phone: ['', ValidationService.phoneValidation],
       noOfSeats: ['1', []],
-      attendees: this.fb.array([this.buildAttendees()])
+      attendees: this.formBuilder.array([this.buildAttendees()])
     });
 
     this.selectedEvent$ = this.jsonServerService.selectedEventAction$;
@@ -60,7 +60,7 @@ export class EventBookingComponent implements OnInit, OnDestroy {
 
 
   buildAttendees(): FormGroup {
-    return this.fb.group({
+    return this.formBuilder.group({
       attendee: ['', ValidationService.attendeesValidation]
     });
   }

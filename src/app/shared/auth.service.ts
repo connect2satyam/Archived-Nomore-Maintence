@@ -30,17 +30,29 @@ export class AuthService {
       catchError(err => throwError('Error occured !'))
     );
 
-  login(userName: string, password: string): void {
+  login(loginFormValues: any): void {
     this.currentUser = {
       id: 2,
-      userName,
-      isAdmin: false
+      userName: loginFormValues.userName,
+      isAdmin: true
     };
 
     this.isUserLoggedIn.next(this.currentUser);
     this.getOnlineStatus.next(true);
     console.log(`User ${this.currentUser.userName} is online and logged in`);
   }
+
+  // login(userName: string, password: string): void {
+  //   this.currentUser = {
+  //     id: 2,
+  //     userName,
+  //     isAdmin: false
+  //   };
+
+  //   this.isUserLoggedIn.next(this.currentUser);
+  //   this.getOnlineStatus.next(true);
+  //   console.log(`User ${this.currentUser.userName} is online and logged in`);
+  // }
 
   logout(): void {
     this.authService.signOut();

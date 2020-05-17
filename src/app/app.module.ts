@@ -7,7 +7,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ErrorMessageComponent } from './components/error-message/error-message.component';
 import { EventBookingComponent } from './components/event-booking/event-booking.component';
 import { EventListingComponent } from './components/event-listing/event-listing.component';
 import { CoreModule } from './core/core.module';
@@ -37,8 +36,7 @@ export function provideConfig() {
   declarations: [
     AppComponent,
     EventListingComponent,
-    EventBookingComponent,
-    ErrorMessageComponent
+    EventBookingComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +54,7 @@ export function provideConfig() {
     provide: AuthServiceConfig,
     useFactory: provideConfig
   }],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

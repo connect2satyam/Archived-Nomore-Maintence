@@ -10,6 +10,8 @@ export class ValidationService {
             required: 'Required',
             nameOfAttendeeRequired: `Please enter the name of Attendee ${counter > 1 ? counter : ''}`,
             userNameRequired: 'Please enter your name',
+            userPasswordRequired: 'Please enter your password',
+            invalidPassword: 'Please enter valid password only small letters (TODO)',
             invalidName: 'Only letters and spaces are allowed',
             emailRequired: 'Please enter your email',
             invalidEmail: 'Invalid email',
@@ -38,6 +40,26 @@ export class ValidationService {
             return null;
         } else {
             return { invalidName: true };
+        }
+    }
+
+    static passwordValidation(control: AbstractControl): { [key: string]: boolean } | null {
+        if (control.untouched && control.value === '') {
+            return { userPasswordRequired: true };
+        }
+        if (control.dirty && control.value === '') {
+            return { userPasswordRequired: true };
+        }
+        if (control.validator.name.toLowerCase() === 'required') {
+            return { userPasswordRequired: true };
+        }
+        if (isNullOrUndefined(control.value) || control.value === '') {
+            return null;
+        }
+        if (control.value.match(/[a-z]$/)) {
+            return null;
+        } else {
+            return { invalidPassword: true };
         }
     }
 
