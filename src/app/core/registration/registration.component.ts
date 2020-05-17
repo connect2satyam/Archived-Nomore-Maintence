@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ValidationService } from 'src/app/shared/validation.service';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService as LocalAuthService } from 'src/app/shared/auth.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit, OnDestroy {
-  pageTitle = 'Registration (TODO)';
+  pageTitle = 'Registration';
   loginForm: FormGroup;
   errorMessage: string;
 
@@ -25,8 +25,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     this.loginForm = this.formBuilder.group({
       userName: ['', ValidationService.nameValidation],
       userEmail: ['', ValidationService.emailValidation],
-      userPwd: ['', ValidationService.passwordValidation],
-      userConfirmPwd: ['', ValidationService.passwordValidation]
+      userPwd: ['', Validators.compose([Validators.minLength(4), ValidationService.passwordValidation])],
+      userConfirmPwd: ['', Validators.compose([Validators.minLength(4), ValidationService.passwordValidation])],
     });
   }
   registration() {
