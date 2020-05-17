@@ -44,13 +44,13 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-md-2 col-form-label" for="passwordId">Confirm Password</label>
+                        <label class="col-md-2 col-form-label" for="userConfirmPwd">Confirm Password</label>
                         <div class="col-md-8">
-                            <input class="form-control" formControlName="userPwd" [ngClass]="{'is-invalid': (loginForm.get('userPwd').touched ||
-                            loginForm.get('userPwd').dirty) &&
-                            !loginForm.get('userPwd').valid }" id="passwordId" type="password" placeholder="Type 'test'" />
+                            <input class="form-control" formControlName="userConfirmPwd" [ngClass]="{'is-invalid': (loginForm.get('userConfirmPwd').touched ||
+                            loginForm.get('userConfirmPwd').dirty) &&
+                            !loginForm.get('userConfirmPwd').valid }" id="passwordId" type="password" placeholder="Type 'test'" />
                             <span class="invalid-feedback">
-                                <satyas-error-message [control]="loginForm.get('userPwd')"></satyas-error-message>
+                                <satyas-error-message [control]="loginForm.get('userConfirmPwd')"></satyas-error-message>
                             </span>
                         </div>
                     </div>

@@ -29,17 +29,38 @@ export class AuthService {
       catchError(err => throwError('Error occured !'))
     );
 
-  localLogin(loginFormValues: any): void {
+  localLogin(loginFormValues: any): Observable<boolean> {
+    if (this.currentUserModel?.email === loginFormValues.userName && this.currentUserModel?.password === loginFormValues.userPwd) {
+      this.currentUserModel = {
+        userName: this.currentUserModel.userName,
+        email: this.currentUserModel.email,
+        password: loginFormValues.userPwd,
+        isSocialLogin: false,
+        isUserLoggedIn: true,
+        photoUrl: './assets/images/Satyanarayana_Devi.jpg'
+      };
+
+      this.currentUser.next(this.currentUserModel);
+      return of(true);
+    } else {
+      this.currentUser.next(null);
+      return of(false);
+    }
+  }
+
+  registration(registrationFormValues: any): Observable<User> {
     this.currentUserModel = {
-      userName: loginFormValues?.userName,
+      userName: registrationFormValues?.userName,
+      email: registrationFormValues?.userEmail,
+      password: registrationFormValues?.userPwd,
       isSocialLogin: false,
-      isUserLoggedIn: true,
+      isUserLoggedIn: false,
       photoUrl: './assets/images/Satyanarayana_Devi.jpg'
     };
 
     this.currentUser.next(this.currentUserModel);
-    // this.getOnlineStatus.next(true);
-    // console.log(`User ${this.currentUserModel.userName} is online and logged in`);
+
+    return of(this.currentUserModel);
   }
 
   socialLogin(): void {
@@ -48,6 +69,8 @@ export class AuthService {
 
         this.currentUserModel = socialUser ? {
           userName: socialUser.firstName,
+          email: socialUser?.email,
+          password: null,
           isSocialLogin: true,
           isUserLoggedIn: true,
           photoUrl: socialUser.photoUrl
@@ -56,6 +79,7 @@ export class AuthService {
       });
     });
   }
+
   logout(): Observable<any> {
     this.currentUser.next(null);
     if (this.currentUserModel.isSocialLogin) {

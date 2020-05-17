@@ -1,5 +1,7 @@
 export interface User {
     userName: string;
+    email: string;
+    password: string;
     isSocialLogin: boolean;
     isUserLoggedIn: boolean;
     photoUrl: string;

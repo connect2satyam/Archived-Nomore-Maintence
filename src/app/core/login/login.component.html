@@ -10,7 +10,7 @@
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label" for="userNameId">User Name</label>
                         <div class="col-md-8">
-                            <input class="form-control" id="userName" type="text" placeholder="Enter 'your name'" formControlName="userName" [ngClass]="{'is-invalid': (loginForm.get('userName').touched ||
+                            <input class="form-control" id="userName" type="text" placeholder="Enter your email (required)" formControlName="userName" [ngClass]="{'is-invalid': (loginForm.get('userName').touched ||
                             loginForm.get('userName').dirty) &&
                             !loginForm.get('userName').valid }" />
                             <span class="invalid-feedback">
@@ -24,7 +24,7 @@
                         <div class="col-md-8">
                             <input class="form-control" formControlName="userPwd" [ngClass]="{'is-invalid': (loginForm.get('userPwd').touched ||
                             loginForm.get('userPwd').dirty) &&
-                            !loginForm.get('userPwd').valid }" id="passwordId" type="password" placeholder="Type 'test'" />
+                            !loginForm.get('userPwd').valid }" id="passwordId" type="password" placeholder="Enter your password" />
                             <span class="invalid-feedback">
                                 <satyas-error-message [control]="loginForm.get('userPwd')"></satyas-error-message>
                             </span>
