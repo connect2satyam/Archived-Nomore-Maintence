@@ -20,7 +20,31 @@
                     </div>
 
                     <div class="form-group row">
+                        <label class="col-md-2 col-form-label" for="userEmail">Email</label>
+                        <div class="col-md-8">
+                            <input class="form-control" id="userEmail" type="text" placeholder="Enter your email" formControlName="userEmail" [ngClass]="{'is-invalid': (loginForm.get('userEmail').touched ||
+                            loginForm.get('userEmail').dirty) &&
+                            !loginForm.get('userEmail').valid }" />
+                            <span class="invalid-feedback">
+                                <satyas-error-message [control]="loginForm.get('userEmail')"></satyas-error-message>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
                         <label class="col-md-2 col-form-label" for="passwordId">Password</label>
+                        <div class="col-md-8">
+                            <input class="form-control" formControlName="userPwd" [ngClass]="{'is-invalid': (loginForm.get('userPwd').touched ||
+                            loginForm.get('userPwd').dirty) &&
+                            !loginForm.get('userPwd').valid }" id="passwordId" type="password" placeholder="Type 'test'" />
+                            <span class="invalid-feedback">
+                                <satyas-error-message [control]="loginForm.get('userPwd')"></satyas-error-message>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-2 col-form-label" for="passwordId">Confirm Password</label>
                         <div class="col-md-8">
                             <input class="form-control" formControlName="userPwd" [ngClass]="{'is-invalid': (loginForm.get('userPwd').touched ||
                             loginForm.get('userPwd').dirty) &&
@@ -35,12 +59,16 @@
                         <div class="col-md-2"></div>
                         <div class="col-md-8">
 
-                            <button class="btn btn-primary" style="float: left;" type="submit" style="width:80px;margin-right:10px" (click)="login()" [title]="'Enter valid data'" [disabled]="loginForm.invalid">
-                                Log In
+                            <button class="btn btn-primary" style="float: left;" type="submit" (click)="registration()" [title]="'Enter valid data'" [disabled]="loginForm.invalid">
+                                Register
                             </button>
+
+
                             <button class="btn btn-danger" style="float: right;" type="submit" (click)="cancel()">
                                 Cancel
                             </button>
+
+
                         </div>
                     </div>
                 </fieldset>
@@ -48,19 +76,4 @@
             <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
         </div>
     </div>
-    <div class="card">
-        <div class="card-header">
-            <div class="form-group row">
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-                    <button class="btn btn-primary" style="float: left;" type="submit" routerLink='/registration'>
-                        Registration
-                    </button>
-                    <button class="btn btn-primary" style="float: right;" type="submit" (click)="signInWithGoogle()">
-                        Sign In With Google
-                    </button>
-                </div>
-            </div>
-
-        </div>
-    </div>
+</div>

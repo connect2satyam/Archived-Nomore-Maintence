@@ -1,3 +1,4 @@
+import { RegistrationComponent } from './core/registration/registration.component';
 import { WelcomeComponent } from './core/welcome/welcome.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -9,6 +10,7 @@ import { LoginComponent } from './core/login/login.component';
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'welcome', component: WelcomeComponent },
+  { path: 'registration', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   { path: 'event-listing', component: EventListingComponent },
   { path: 'event-booking', component: EventBookingComponent },

@@ -10,6 +10,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { LoginComponent } from './login/login.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ErrorMessageComponent } from './error-message/error-message.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 
 
@@ -20,7 +21,8 @@ import { ErrorMessageComponent } from './error-message/error-message.component';
     NavbarComponent,
     FooterComponent,
     LoginComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    RegistrationComponent
   ],
   imports: [
     CommonModule,
