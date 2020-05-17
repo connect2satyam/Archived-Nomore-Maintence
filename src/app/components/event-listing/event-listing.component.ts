@@ -18,7 +18,7 @@ export class EventListingComponent implements OnInit {
   formGroup = this.fb.group({
     eventName: ['']
   });
-  private socialUser$: Observable<SocialUser>;
+  // private socialUser$: Observable<SocialUser>;
   private loggedIn: boolean;
 
   constructor(
@@ -32,10 +32,11 @@ export class EventListingComponent implements OnInit {
     this.formGroup.get('eventName').valueChanges.subscribe((inputText: string) => {
       this.jsonServerService.eventSearch(inputText);
     });
+
     this.jsonServerService.eventSearch(null);
     this.getEvents$ = this.jsonServerService.getEventsFilterByEventName$;
 
-    this.socialUser$ = this.authService.socialUser$;
+    // this.socialUser$ = this.authService.socialUser$;
 
   }
 

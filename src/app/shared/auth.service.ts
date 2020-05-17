@@ -1,26 +1,25 @@
 import { Injectable } from '@angular/core';
-import { User } from './user.model';
+import { User, UserModel } from './user.model';
 import { BehaviorSubject, Observable, of, from, throwError } from 'rxjs';
 import { map, tap, catchError } from 'rxjs/operators';
-import { AuthService as SocialAuthService } from 'angularx-social-login';
+import { AuthService as SocialAuthService, GoogleLoginProvider } from 'angularx-social-login';
 import { SocialUser } from 'angularx-social-login';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  currentUser: User | null;
-  redirectUrl: string;
+  currentUserModel: User | null;
 
-  private getOnlineStatus = new BehaviorSubject<boolean>(false);
-  getOnlineStatusAction$ = this.getOnlineStatus.asObservable();
+  // private getOnlineStatus = new BehaviorSubject<boolean>(false);
+  // getOnlineStatusAction$ = this.getOnlineStatus.asObservable();
 
-  private isUserLoggedIn = new BehaviorSubject<User>(this.currentUser);
-  isUserLoggedInAction$ = this.isUserLoggedIn.asObservable();
+  private currentUser = new BehaviorSubject<User>(this.currentUserModel);
+  currentUserAction$ = this.currentUser.asObservable();
 
-  constructor(private authService: SocialAuthService) { }
+  constructor(private socialAuthService: SocialAuthService) { }
 
-  socialUser$ = this.authService.authState;
+  socialUser$ = this.socialAuthService.authState;
 
   // Below messages must be from API.
   message$ = from(['satya', 'lakshmi', 'sindhu',
@@ -30,17 +29,43 @@ export class AuthService {
       catchError(err => throwError('Error occured !'))
     );
 
-  login(loginFormValues: any): void {
-    this.currentUser = {
-      id: 2,
-      userName: loginFormValues.userName,
-      isAdmin: true
+  localLogin(loginFormValues: any): void {
+    this.currentUserModel = {
+      userName: loginFormValues?.userName,
+      isSocialLogin: false,
+      isUserLoggedIn: true
     };
 
-    this.isUserLoggedIn.next(this.currentUser);
-    this.getOnlineStatus.next(true);
-    console.log(`User ${this.currentUser.userName} is online and logged in`);
+    this.currentUser.next(this.currentUserModel);
+    // this.getOnlineStatus.next(true);
+    // console.log(`User ${this.currentUserModel.userName} is online and logged in`);
   }
+
+  socialLogin(): void {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(() => {
+      this.socialUser$.subscribe((socialUser: SocialUser) => {
+
+        this.currentUserModel = socialUser ? {
+          userName: socialUser.firstName,
+          isSocialLogin: true,
+          isUserLoggedIn: true
+        } : null;
+        this.currentUser.next(this.currentUserModel);
+      });
+    });
+  }
+  logout(): Observable<any> {
+    this.currentUser.next(null);
+    if (this.currentUserModel.isSocialLogin) {
+      return from(this.socialAuthService.signOut());
+    } else {
+      return of(null);
+    }
+  }
+  // socialLogout(): void {
+  //   this.currentUser.next(null);
+  //   this.authService.signOut();
+  // }
 
   // login(userName: string, password: string): void {
   //   this.currentUser = {
@@ -54,11 +79,16 @@ export class AuthService {
   //   console.log(`User ${this.currentUser.userName} is online and logged in`);
   // }
 
-  logout(): void {
-    this.authService.signOut();
-    this.getOnlineStatus.next(false);
-    // console.error(`User ${this.currentUser.userName} is offline and logged out`);
-    // this.currentUser = undefined;
-    // this.isUserLoggedIn.next(this.currentUser);
-  }
+  // logout(): void {
+  //   this.socialAuthService.signOut();
+  // if (this.currentUserModel.isSocialLogin) {
+  //   this.socialAuthService.signOut();
+  // }
+  // this.currentUser.next(null);
+
+  // this.getOnlineStatus.next(false);
+  // console.error(`User ${this.currentUser.userName} is offline and logged out`);
+  // this.currentUser = undefined;
+  // this.isUserLoggedIn.next(this.currentUser);
+  // }
 }

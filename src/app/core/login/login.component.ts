@@ -2,9 +2,10 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService as LocalAuthService } from 'src/app/shared/auth.service';
-import { AuthService } from 'angularx-social-login';
+
 import { FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
 import { ValidationService } from 'src/app/shared/validation.service';
+import { User } from 'src/app/shared/user.model';
 
 
 @Component({
@@ -20,7 +21,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(
     private localAuthService: LocalAuthService,
-    private authService: AuthService,
     private router: Router,
     private formBuilder: FormBuilder) { }
 
@@ -32,19 +32,26 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(x => {
-      const res = x;
-      this.router.navigate(['/event-listing']);
-    });
+    // this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(x => {
+    //   const res = x;
+    //   this.router.navigate(['/event-listing']);
+    // });
 
+    this.localAuthService.socialLogin();
+
+    this.localAuthService.currentUserAction$.subscribe((currentUser: User) => {
+      if (currentUser?.isUserLoggedIn) {
+        this.router.navigate(['/event-listing']);
+      }
+    });
   }
 
   signInWithFB(): void {
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+    // this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
 
   signOut(): void {
-    this.authService.signOut();
+    this.localAuthService.logout();
   }
 
   ngOnDestroy(): void {
@@ -56,9 +63,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   login(): void {
-    this.localAuthService.login(this.loginForm.value);
-    this.localAuthService.isUserLoggedInAction$.subscribe(x => {
-      this.router.navigate(['/event-listing']);
+    this.localAuthService.localLogin(this.loginForm.value);
+    this.localAuthService.currentUserAction$.subscribe((currentUser: User) => {
+      if (currentUser?.isUserLoggedIn) {
+        this.router.navigate(['/event-listing']);
+      }
     });
     // if (loginForm && loginForm.valid) {
     //   const userName = loginForm.form.value.userName;

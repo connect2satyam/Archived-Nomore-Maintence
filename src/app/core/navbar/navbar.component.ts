@@ -1,9 +1,9 @@
-import { Component, EventEmitter, OnInit, Output, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/shared/auth.service';
-import { Subscription, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
+import { AuthService as LocalAuthService } from 'src/app/shared/auth.service';
+import { User } from 'src/app/shared/user.model';
 import { ThemeService } from 'src/app/theme/theme.service';
-import { SocialUser } from 'angularx-social-login';
 
 @Component({
   selector: 'satyas-navbar',
@@ -12,23 +12,31 @@ import { SocialUser } from 'angularx-social-login';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   // private socialUser$: Observable<SocialUser>;
-  socialUser: SocialUser;
   isUserLogged = false;
 
-  constructor(private router: Router, private authService: AuthService, private themeService: ThemeService) { }
+  constructor(
+    private router: Router,
+    private localAuthService: LocalAuthService,
+    private themeService: ThemeService) { }
   @Output() eventoNavbar = new EventEmitter();
   dateTime: Date;
   userName: string;
+  user$: Observable<User>;
   //  subOnlineStatus: Subscription;
-  subIsUserLoggedIn: Subscription;
   themes: string[] = ['Light', 'Dark', 'Satya', 'Praveen'];
 
 
   ngOnInit(): void {
-    this.subIsUserLoggedIn = this.authService.socialUser$.subscribe((user: SocialUser) => {
-      this.socialUser = user;
-      this.userName = this.socialUser?.firstName;
-      this.isUserLogged = (user != null);
+    this.user$ = this.localAuthService.currentUserAction$;
+
+    this.user$.subscribe(userObject => {
+      if (userObject === null || userObject === undefined) {
+        this.isUserLogged = false;
+        this.userName = null;
+      } else {
+        this.isUserLogged = userObject?.isUserLoggedIn;
+        this.userName = userObject?.userName;
+      }
     });
 
     setInterval(() => {
@@ -36,14 +44,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }, 1000);
 
     this.themeService.setLightTheme();
-
-    // this.subOnlineStatus = this.authService.getOnlineStatusAction$.subscribe(isUserLogged => {
-    //   this.isUserLogged = isUserLogged;
-    // });
-
-    // this.subIsUserLoggedIn = this.authService.isUserLoggedInAction$.subscribe(user => {
-    //   this.userName = user !== undefined ? user.userName : null;
-    // });
   }
 
   toggleMenu() {
@@ -67,12 +67,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   logOut(): void {
-    this.authService.logout();
-    this.router.navigate(['/welcome']);
+    this.localAuthService.logout().subscribe(() => {
+      this.router.navigate(['/welcome']);
+    });
   }
 
   ngOnDestroy(): void {
-    // this.subOnlineStatus.unsubscribe();
-    this.subIsUserLoggedIn.unsubscribe();
   }
 }

@@ -1,7 +1,7 @@
 export interface User {
-    id: number;
     userName: string;
-    isAdmin: boolean;
+    isSocialLogin: boolean;
+    isUserLoggedIn: boolean;
 }
 
 export interface UserModel {

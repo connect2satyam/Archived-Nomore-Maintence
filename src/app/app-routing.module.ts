@@ -8,6 +8,7 @@ import { LoginComponent } from './core/login/login.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
+  { path: 'welcome', component: WelcomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'event-listing', component: EventListingComponent },
   { path: 'event-booking', component: EventBookingComponent },
