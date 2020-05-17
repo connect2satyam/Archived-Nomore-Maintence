@@ -11,7 +11,6 @@ import { ThemeService } from 'src/app/theme/theme.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit, OnDestroy {
-  // private socialUser$: Observable<SocialUser>;
   isUserLogged = false;
 
   constructor(
@@ -22,7 +21,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   dateTime: Date;
   userName: string;
   user$: Observable<User>;
-  //  subOnlineStatus: Subscription;
   themes: string[] = ['Light', 'Dark', 'Satya', 'Praveen'];
 
 

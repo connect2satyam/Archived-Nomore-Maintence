@@ -32,11 +32,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   signInWithGoogle(): void {
-    // this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(x => {
-    //   const res = x;
-    //   this.router.navigate(['/event-listing']);
-    // });
-
     this.localAuthService.socialLogin();
 
     this.localAuthService.currentUserAction$.subscribe((currentUser: User) => {
@@ -69,19 +64,6 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.router.navigate(['/event-listing']);
       }
     });
-    // if (loginForm && loginForm.valid) {
-    //   const userName = loginForm.form.value.userName;
-    //   const password = loginForm.form.value.password;
-    //   this.localAuthService.login(userName, password);
-
-    //   if (this.localAuthService.redirectUrl) {
-    //     this.router.navigateByUrl(this.localAuthService.redirectUrl);
-    //   } else {
-    //     this.router.navigate(['/event-listing']);
-    //   }
-    // } else {
-    //   this.errorMessage = 'Please enter a user name and password.';
-    // }
   }
 
 }
