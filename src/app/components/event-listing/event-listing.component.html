@@ -22,7 +22,7 @@
                                 <p class="event-data">Id : {{event.id}}</p>
                                 <p class="event-data">Date : {{event.eventDate | date:'medium'}}</p>
                                 <p class="event-data">Available Seats : {{event.availableSeats}}
-                                    <span class="badge badge-primary"><button class="btn btn-primary" [disabled]="!event.availableSeats" (click)="selectedEvent(event)">{{event.availableSeats?'Book Now':'Sold Out'}}</button></span>
+                                    <span class="badge badge-primary booking-button"><button class="btn btn-primary" [disabled]="!event.availableSeats" (click)="selectedEvent(event)">{{event.availableSeats?'Book Now':'Sold Out'}}</button></span>
                                 </p>
                                 <img class="img-thumbnail" [src]="event?.imageUrl" alt="Card image">
                             </div>
