@@ -22,7 +22,7 @@
                         <div class="form-group row">
                             <label class="col-md-2 col-form-label" for="userEmail">Email</label>
                             <div class="col-md-8">
-                                <input class="form-control" id="userEmail" type="text" placeholder="Enter your email" formControlName="userEmail" [ngClass]="{'is-invalid': (loginForm.get('emailGroup.userEmail').touched ||
+                                <input class="form-control" id="userEmail" type="password" placeholder="Enter your email" formControlName="userEmail" [ngClass]="{'is-invalid': (loginForm.get('emailGroup.userEmail').touched ||
                             loginForm.get('emailGroup.userEmail').dirty) &&
                             !loginForm.get('emailGroup.userEmail').valid }" />
                                 <span class="invalid-feedback">
