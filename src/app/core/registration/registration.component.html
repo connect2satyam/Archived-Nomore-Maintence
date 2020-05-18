@@ -18,19 +18,32 @@
                             </span>
                         </div>
                     </div>
+                    <div formGroupName="emailGroup">
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="userEmail">Email</label>
+                            <div class="col-md-8">
+                                <input class="form-control" id="userEmail" type="text" placeholder="Enter your email" formControlName="userEmail" [ngClass]="{'is-invalid': (loginForm.get('emailGroup.userEmail').touched ||
+                            loginForm.get('emailGroup.userEmail').dirty) &&
+                            !loginForm.get('emailGroup.userEmail').valid }" />
+                                <span class="invalid-feedback">
+                                    <satyas-error-message [control]="loginForm.get('emailGroup.userEmail')"></satyas-error-message>
+                                </span>
+                            </div>
+                        </div>
 
-                    <div class="form-group row">
-                        <label class="col-md-2 col-form-label" for="userEmail">Email</label>
-                        <div class="col-md-8">
-                            <input class="form-control" id="userEmail" type="text" placeholder="Enter your email" formControlName="userEmail" [ngClass]="{'is-invalid': (loginForm.get('userEmail').touched ||
-                            loginForm.get('userEmail').dirty) &&
-                            !loginForm.get('userEmail').valid }" />
-                            <span class="invalid-feedback">
-                                <satyas-error-message [control]="loginForm.get('userEmail')"></satyas-error-message>
-                            </span>
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="userConfirmEmail">Confirm Email</label>
+                            <div class="col-md-8">
+                                <input class="form-control" id="userConfirmEmail" type="text" placeholder="Enter your confirm email" formControlName="userConfirmEmail" [ngClass]="{'is-invalid': (loginForm.get('emailGroup').errors) || ((loginForm.get('emailGroup.userConfirmEmail').touched ||
+                            loginForm.get('emailGroup.userConfirmEmail').dirty) &&
+                            !loginForm.get('emailGroup.userConfirmEmail').valid) }" />
+                                <span class="invalid-feedback">
+                                    <satyas-error-message [control]="loginForm.get('emailGroup')">
+                                    </satyas-error-message>
+                                </span>
+                            </div>
                         </div>
                     </div>
-
                     <div class="form-group row">
                         <label class="col-md-2 col-form-label" for="passwordId">Password</label>
                         <div class="col-md-8">
@@ -43,17 +56,18 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    <!-- <div class="form-group row">
                         <label class="col-md-2 col-form-label" for="userConfirmPwd">Confirm Password</label>
                         <div class="col-md-8">
                             <input class="form-control" formControlName="userConfirmPwd" [ngClass]="{'is-invalid': (loginForm.get('userConfirmPwd').touched ||
                             loginForm.get('userConfirmPwd').dirty) &&
                             !loginForm.get('userConfirmPwd').valid }" id="passwordId" type="password" placeholder="Enter confirm password (required)" />
                             <span class="invalid-feedback">
-                                <satyas-error-message [control]="loginForm.get('userConfirmPwd')"></satyas-error-message>
+                                <satyas-error-message [control]="loginForm.get('userConfirmPwd')">
+                                </satyas-error-message>
                             </span>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="form-group row">
                         <div class="col-md-2"></div>

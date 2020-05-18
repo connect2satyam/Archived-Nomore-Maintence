@@ -15,6 +15,7 @@ export class ValidationService {
             invalidPassword: 'Please enter valid password only small letters (TODO)',
             invalidName: 'Only letters and spaces are allowed',
             emailRequired: 'Please enter your email',
+            emailsMismatch: 'Confirm email does not matched with email and may be invalid email.',
             invalidEmail: 'Invalid email',
             invalidPhone: 'Please enter 10 digit phone number',
             noOfSeatsValidation: 'Please enter number of seats',
@@ -80,6 +81,21 @@ export class ValidationService {
         } else {
             return { invalidEmail: true };
         }
+    }
+
+    static emailMatcher(c: AbstractControl): { [key: string]: boolean } | null {
+        const emailControl = c.get('userEmail');
+        const confirmControl = c.get('userConfirmEmail');
+
+        if (emailControl.pristine || confirmControl.pristine) {
+            return null;
+        }
+
+        if (emailControl.value === confirmControl.value) {
+            return null;
+        }
+
+        return { emailsMismatch: true };
     }
 
     static phoneValidation(control: AbstractControl): { [key: string]: boolean } | null {

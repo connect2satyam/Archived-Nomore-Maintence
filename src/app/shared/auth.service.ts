@@ -51,7 +51,7 @@ export class AuthService {
   registration(registrationFormValues: any): Observable<User> {
     this.currentUserModel = {
       userName: registrationFormValues?.userName,
-      email: registrationFormValues?.userEmail,
+      email: registrationFormValues?.emailGroup.userEmail,
       password: registrationFormValues?.userPwd,
       isSocialLogin: false,
       isUserLoggedIn: false,
