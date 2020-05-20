@@ -1,4 +1,4 @@
-<nav id="sidebar">
+<!-- <nav id="sidebar">
     <div class="sidebar-header">
         <h3>SatyaS</h3>
         <img class="photo-style" [src]="getImageURL()" *ngIf="isUserLogged">
@@ -12,14 +12,6 @@
             </a>
         </li>
         <li *ngIf="isUserLogged">
-            <!-- <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                <i class="fa fa-home"></i> Components
-            </a>
-            <ul class="collapse list-unstyled" id="homeSubmenu" *ngIf="isUserLogged">
-                <li>
-                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/event-listing']">Event Listing</a>
-                </li>
-            </ul> -->
             <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <i class="fa fa-copy"></i> Pages
             </a>
@@ -27,10 +19,34 @@
                 <li>
                     <a class="nav-link" routerLinkActive="active" [routerLink]="['/event-listing']">Event Listing</a>
                 </li>
-                <!-- <li>
-                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/event-booking']">Event Booking</a>
-                </li> -->
+            </ul>
+        </li>
+    </ul>
+</nav> -->
+
+<div id="mySidebar" class="sidebar">
+    <a class="closebtn" (click)="closeNav()">×</a>
+   <nav>
+    <div>
+        <img class="photo-style" [src]="getImageURL()" *ngIf="isUserLogged">
+    </div>
+
+    <ul>
+        <li class="active">
+            <a routerLinkActive="active" [routerLink]="['/']">
+                <i class="fa fa-briefcase"></i> Home
+            </a>
+        </li>
+        <li *ngIf="isUserLogged">
+            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fa fa-copy"></i> Pages
+            </a>
+            <ul class="collapse " id="pageSubmenu">
+                <li>
+                    <a routerLinkActive="active" [routerLink]="['/event-listing']">Event Listing</a>
+                </li>
             </ul>
         </li>
     </ul>
 </nav>
+  </div>

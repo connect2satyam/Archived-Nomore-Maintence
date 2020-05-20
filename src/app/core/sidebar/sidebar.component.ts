@@ -3,6 +3,7 @@ import { Subscription, Observable } from 'rxjs';
 import { AuthService as LocalAuthService } from 'src/app/shared/auth.service';
 import { SocialUser } from 'angularx-social-login';
 import { User } from 'src/app/shared/user.model';
+import $ from 'jquery';
 
 @Component({
   selector: 'satyas-sidebar',
@@ -41,6 +42,10 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   getImageURL() {
     return this.photoUrl;
+  }
+
+  closeNav(){
+    $('#mySidebar').toggleClass('active');
   }
 
   ngOnDestroy(): void {

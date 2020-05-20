@@ -9,6 +9,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   toggle() {
-    $('#sidebar').toggleClass('active');
+    $('#mySidebar').toggleClass('active');
   }
 }
