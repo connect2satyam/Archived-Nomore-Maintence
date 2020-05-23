@@ -1,7 +1,9 @@
-<satyas-navbar (eventoNavbar)="toggle()"></satyas-navbar>
+<satyas-navbar (eventoNavbar)="toggle()">
+</satyas-navbar>
 <div id="wrapper">
     <satyas-sidebar></satyas-sidebar>
     <div id="content">
+        <div class="circle" [ngStyle]="getStyles()"></div>
         <router-outlet></router-outlet>
     </div>
 </div>
