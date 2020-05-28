@@ -201,7 +201,7 @@ span {
 #content {
     width: 100%;
     padding-top: 0;
-    min-height: 100vh;
+    min-height: calc(80vh);
     transition: all 0.3s;
 }
 
@@ -209,6 +209,7 @@ span {
 /* ---------------------------------------------------
     SIDEBAR STYLE 
 ---------------------------------------------------- */
+
 .sidebar {
     height: 100%;
     width: 0;
@@ -220,59 +221,65 @@ span {
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
-  }
-  
-  .sidebar.active {
+}
+
+.sidebar.active {
     min-width: 250px;
     max-width: 250px;
     text-align: left;
 }
 
-  .sidebar a {
+.sidebar a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
     color: white;
     display: block;
     transition: 0.3s;
-  }
-  
-  .sidebar a:hover {
+}
+
+.sidebar a:hover {
     color: #f1f1f1;
-  }
-  
-  .sidebar .closebtn {
+}
+
+.sidebar .closebtn {
     position: absolute;
     top: 0;
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
     cursor: pointer;
-  }
-  
-  .openbtn {
+}
+
+.openbtn {
     font-size: 20px;
     cursor: pointer;
     background-color: #111;
     color: white;
     padding: 10px 15px;
     border: none;
-  }
-  
-  .openbtn:hover {
+}
+
+.openbtn:hover {
     background-color: #444;
-  }
-  
-  #main {
+}
+
+#main {
     transition: margin-left .5s;
     padding: 16px;
-  }
-  
-  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-  @media screen and (max-height: 450px) {
-    .sidebar {padding-top: 15px;}
-    .sidebar a {font-size: 18px;}
-  }
+}
+
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
+@media screen and (max-height: 450px) {
+    .sidebar {
+        padding-top: 15px;
+    }
+    .sidebar a {
+        font-size: 18px;
+    }
+}
 
 a[data-toggle="collapse"] {
     position: relative;
@@ -328,7 +335,8 @@ a.article:hover {
     height: 18px;
 }
 
-::-webkit-scrollbar-button:start:decrement, ::-webkit-scrollbar-button:end:increment {
+::-webkit-scrollbar-button:start:decrement,
+ ::-webkit-scrollbar-button:end:increment {
     height: 15px;
     width: 13px;
     display: block;
@@ -360,13 +368,16 @@ a.article:hover {
     background-position: 3px 4px;
 }
 
-*::-webkit-scrollbar-button:vertical:increment:hover, *::-webkit-scrollbar-button:vertical:decrement:hover {
+*::-webkit-scrollbar-button:vertical:increment:hover,
+*::-webkit-scrollbar-button:vertical:decrement:hover {
     cursor: pointer;
 }
 
-*::-webkit-scrollbar-button:vertical:increment:active, *::-webkit-scrollbar-button:vertical:decrement:active {
+*::-webkit-scrollbar-button:vertical:increment:active,
+*::-webkit-scrollbar-button:vertical:decrement:active {
     background-color: #000000;
     cursor: pointer;
 }
+
 
 /* scroll bar css end */

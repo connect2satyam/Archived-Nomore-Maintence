@@ -9,9 +9,9 @@ import { ResizeEvent } from 'angular-resizable-element';
 export class ResizeComponent implements OnInit {
   public satyaStyle: object = {
     position: 'absolute',
-    bottom: `1vh`,
-    left: `1vw`,
-    width: `97vw`,
+    bottom: `calc(11vh)`,
+    left: `calc(1vw)`,
+    width: `calc(97vw)`,
   };
   constructor() { }
 
@@ -22,7 +22,7 @@ export class ResizeComponent implements OnInit {
 
   validate(event: ResizeEvent): boolean {
     const MIN_DIMENSIONS_PX = 200;
-    const MAX_DIMENSIONS_PX = 672;
+    const MAX_DIMENSIONS_PX = 595;
     if ((event.rectangle.height && event.rectangle.height < MIN_DIMENSIONS_PX) || event.rectangle.height > MAX_DIMENSIONS_PX) {
       return false;
     }
@@ -32,9 +32,9 @@ export class ResizeComponent implements OnInit {
   onResizeEnd(event: ResizeEvent): void {
     this.satyaStyle = {
       position: 'absolute',
-      bottom: `1vh`,
-      left: `1vw`,
-      width: `97vw`,
+      bottom: `calc(11vh)`,
+      left: `calc(1vw)`,
+      width: `calc(97vw)`,
       height: `${event.rectangle.height}px`
     };
   }
