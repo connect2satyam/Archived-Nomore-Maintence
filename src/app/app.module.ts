@@ -14,6 +14,8 @@ import { CoreModule } from './core/core.module';
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
 import { environment } from 'src/environments/environment';
+import { ResizeComponent } from './components/resize/resize.component';
+import { ResizableModule } from 'angular-resizable-element';
 
 // 640341226215-pop3u1drhhlovipu3v5fcrp0mc69f965.apps.googleusercontent.com   -- local
 // 640341226215-7amo9e4l6eutu5qjat23kd6lbajvtrk4.apps.googleusercontent.com   -- firbase
@@ -36,7 +38,8 @@ export function provideConfig() {
   declarations: [
     AppComponent,
     EventListingComponent,
-    EventBookingComponent
+    EventBookingComponent,
+    ResizeComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ export function provideConfig() {
     BrowserAnimationsModule,
     CoreModule,
     ToastrModule.forRoot(),
-    SocialLoginModule
+    SocialLoginModule,
+    ResizableModule
   ],
   providers: [{
     provide: AuthServiceConfig,

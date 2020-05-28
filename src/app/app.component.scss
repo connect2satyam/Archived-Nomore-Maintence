@@ -2,7 +2,7 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background-color: red;
+    background-color: darken($color: #000000, $amount: 0);
     position: relative;
     z-index: 99999;
 }

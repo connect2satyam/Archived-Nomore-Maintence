@@ -1,0 +1,4 @@
+<h6>Hey Satya , Drag and pull the edges of the rectangle</h6>
+<div class="rectangle" [ngStyle]="satyaStyle" mwlResizable [validateResize]="validate" [enableGhostResize]="true" (resizeEnd)="onResizeEnd($event)">
+    <div class="resize-handle-top" mwlResizeHandle [resizeEdges]="{ top: true }"></div>
+</div>

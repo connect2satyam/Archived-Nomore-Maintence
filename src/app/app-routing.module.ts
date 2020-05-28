@@ -1,3 +1,4 @@
+import { ResizeComponent } from './components/resize/resize.component';
 import { RegistrationComponent } from './core/registration/registration.component';
 import { WelcomeComponent } from './core/welcome/welcome.component';
 import { NgModule } from '@angular/core';
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'resize', component: ResizeComponent },
   { path: 'event-listing', component: EventListingComponent },
   { path: 'event-booking', component: EventBookingComponent },
   { path: '**', component: WelcomeComponent }

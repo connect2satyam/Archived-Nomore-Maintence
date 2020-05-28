@@ -1,0 +1,46 @@
+.rectangle {
+    position: relative;
+    // top: 0px;
+    // display: flex;
+    // align-items: bottom;
+    // justify-content: baseline;
+    width: calc(100vw);
+    height: 150px;
+    background-color: green;
+    border: solid 1px #121621;
+    color: #121621;
+    margin: auto;
+    // bottom: 0px;
+    border-radius: 100px;
+}
+
+.resize-handle-top {
+    position: absolute;
+    height: 25px;
+    // background-color: yellow;
+    cursor: row-resize;
+    width: 90%;
+    top: 0;
+    left: 70px;
+    border-radius: 100px;
+}
+
+// .resize-handle-top {
+//     top: 0;
+// }
+// .resize-handle-bottom {
+//     bottom: 0;
+// }
+// .resize-handle-left,
+// .resize-handle-right {
+//     position: absolute;
+//     height: 100%;
+//     cursor: col-resize;
+//     width: 5px;
+// }
+// .resize-handle-left {
+//     left: 0;
+// }
+// .resize-handle-right {
+//     right: 0;
+// }
