@@ -6,36 +6,52 @@
     border: solid 1px #121621;
     color: #121621;
     margin: auto;
-    border-radius: 100px;
+    // border-radius: 100px;
 }
 
 .resize-handle-top {
     position: absolute;
     height: 25px;
     // background-color: yellow;
-    cursor: row-resize;
-    width: 90%;
+    cursor: ns-resize;
+    width: 100%;
     top: 0;
-    left: 70px;
-    border-radius: 100px;
+    // left: 70px;
+    // border-radius: 100px;
 }
 
-// .resize-handle-top {
-//     top: 0;
-// }
-// .resize-handle-bottom {
-//     bottom: 0;
-// }
-// .resize-handle-left,
-// .resize-handle-right {
-//     position: absolute;
-//     height: 100%;
-//     cursor: col-resize;
-//     width: 5px;
-// }
-// .resize-handle-left {
-//     left: 0;
-// }
-// .resize-handle-right {
-//     right: 0;
-// }
+.event-data {
+    font-size: .8rem;
+    font-weight: 300;
+    color: #516bf0;
+}
+
+.card {
+    border-radius: 1.25rem !important;
+    margin-bottom: 5px !important;
+    overflow: scroll;
+}
+
+.card-header {
+    background-color: rgba(0, 0, 0, 0.01) !important;
+}
+
+.fieldset-class {
+    margin-top: 5px !important;
+}
+
+.btn {
+    font-size: .5rem !important;
+    line-height: 0.5 !important;
+}
+
+.img-thumbnail {
+    border-radius: 1.25rem !important;
+    border: 5px solid #dee2e6 !important;
+    height: 100px;
+    width: 180px;
+}
+
+.booking-button {
+    margin-left: 18%;
+}

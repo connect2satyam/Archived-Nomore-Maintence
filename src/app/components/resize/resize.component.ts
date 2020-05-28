@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ResizeEvent } from 'angular-resizable-element';
+import { Observable } from 'rxjs';
+import { FormBuilder, FormControl } from '@angular/forms';
+import { JsonServerService } from 'src/app/shared/json-server.service';
+import { EventModel } from 'src/app/shared/event.model';
+import { Router } from '@angular/router';
+import { SocialUser } from 'angularx-social-login';
+import { AuthService } from 'src/app/shared/auth.service';
 
 @Component({
   selector: 'satyas-resize',
@@ -9,15 +16,40 @@ import { ResizeEvent } from 'angular-resizable-element';
 export class ResizeComponent implements OnInit {
   public satyaStyle: object = {
     position: 'absolute',
-    bottom: `calc(11vh)`,
+    bottom: `calc(10vh)`,
     left: `calc(1vw)`,
     width: `calc(97vw)`,
   };
-  constructor() { }
+  getEvents$: Observable<EventModel[]>;
+  formGroup = this.fb.group({
+    eventName: ['']
+  });
+  // private socialUser$: Observable<SocialUser>;
+  private loggedIn: boolean;
+
+  constructor(
+    private jsonServerService: JsonServerService,
+    private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
+    this.formGroup.get('eventName').valueChanges.subscribe((inputText: string) => {
+      this.jsonServerService.eventSearch(inputText);
+    });
+
+    this.jsonServerService.eventSearch(null);
+    this.getEvents$ = this.jsonServerService.getEventsFilterByEventName$;
+
+    // this.socialUser$ = this.authService.socialUser$;
+
   }
 
+  selectedEvent(selectedEvent: EventModel) {
+    this.jsonServerService.selectedEvent(selectedEvent);
+    this.router.navigate(['event-booking']);
+  }
 
 
   validate(event: ResizeEvent): boolean {
@@ -32,7 +64,7 @@ export class ResizeComponent implements OnInit {
   onResizeEnd(event: ResizeEvent): void {
     this.satyaStyle = {
       position: 'absolute',
-      bottom: `calc(11vh)`,
+      bottom: `calc(10vh)`,
       left: `calc(1vw)`,
       width: `calc(97vw)`,
       height: `${event.rectangle.height}px`
