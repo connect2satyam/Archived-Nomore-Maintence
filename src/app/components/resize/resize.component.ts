@@ -1,3 +1,4 @@
+import { CourseRegistration } from './../../shared/course-registration';
 import { Component, OnInit } from '@angular/core';
 import { ResizeEvent } from 'angular-resizable-element';
 import { Observable } from 'rxjs';
@@ -26,6 +27,7 @@ export class ResizeComponent implements OnInit {
   });
   // private socialUser$: Observable<SocialUser>;
   private loggedIn: boolean;
+  courseRegistration$: Observable<CourseRegistration[]>;
 
   constructor(
     private jsonServerService: JsonServerService,
@@ -35,21 +37,14 @@ export class ResizeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.formGroup.get('eventName').valueChanges.subscribe((inputText: string) => {
-      this.jsonServerService.eventSearch(inputText);
-    });
 
-    this.jsonServerService.eventSearch(null);
-    this.getEvents$ = this.jsonServerService.getEventsFilterByEventName$;
+    this.courseRegistration$ = this.jsonServerService.getCourseRegistration();
 
-    // this.socialUser$ = this.authService.socialUser$;
+
 
   }
 
-  selectedEvent(selectedEvent: EventModel) {
-    this.jsonServerService.selectedEvent(selectedEvent);
-    this.router.navigate(['event-booking']);
-  }
+
 
 
   validate(event: ResizeEvent): boolean {

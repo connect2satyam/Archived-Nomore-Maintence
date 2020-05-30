@@ -5,12 +5,15 @@ import { map } from 'rxjs/operators';
 import { EventModel } from './event.model';
 
 import * as importData from 'src/db/db.json';
+import { CourseRegistration } from './course-registration';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JsonServerService {
   // URL = 'https://5d1760a48060b10014297b02.mockapi.io/api/v1/';
+  localURL = 'http://localhost:90/api/courses';
+
   constructor(private httClient: HttpClient) {
   }
 
@@ -52,6 +55,10 @@ export class JsonServerService {
 
   eventSearch(eventName: string) {
     this.eventSubject.next(eventName);
+  }
+
+  getCourseRegistration(): Observable<CourseRegistration[]> {
+   return this.httClient.get<CourseRegistration[]>(this.localURL);
   }
 }
 
