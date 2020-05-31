@@ -1,0 +1,20 @@
+<div class="card">
+    <div class="card-header">
+        <span>Header section</span>
+        <ng-content select=".header"></ng-content>
+    </div>
+    <div class="card-title">
+        <span>Title section</span>
+        <ng-content select=".title"></ng-content>
+    </div>
+
+    <div class="card-body">
+        <span>Body section</span>
+        <ng-content select='.body'></ng-content>
+    </div>
+
+    <div class="card-footer">
+        <span>Footer section</span>
+        <ng-content select='.footer'></ng-content>
+    </div>
+</div>
