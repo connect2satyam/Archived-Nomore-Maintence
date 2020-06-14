@@ -28,7 +28,6 @@ export class HostComponent implements OnInit, AfterViewInit {
   }
 
   onClick(txtValue: string) {
-    debugger;
     const test = txtValue;
   }
   ngOnInit(): void {
