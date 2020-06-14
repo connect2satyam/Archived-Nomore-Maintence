@@ -27,8 +27,12 @@ export class HostComponent implements OnInit, AfterViewInit {
     // }, 1000);
   }
 
+  onClick(txtValue: string) {
+    debugger;
+    const test = txtValue;
+  }
   ngOnInit(): void {
-    const color =  Color.Blue;
+    const color = Color.Blue;
 
     // this.tuple = ['satya', 300000, false];
     // console.log(this.tuple);
@@ -43,6 +47,6 @@ export class HostComponent implements OnInit, AfterViewInit {
 
 enum Color {
   Red,
-  Green  = 1000,
+  Green = 1000,
   Blue
 }

@@ -11,6 +11,10 @@
     </div>
 
     <div class="body">
+        <div class="row">
+            <input type="text" #name placeholder="Enter your name" />
+            <button (click)="onClick(name.value)">Submit</button>
+        </div>
         <h6>Host Body</h6>
     </div>
     <div class="footer">
