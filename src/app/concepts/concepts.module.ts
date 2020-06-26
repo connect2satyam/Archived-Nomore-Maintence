@@ -10,6 +10,7 @@ import { ConceptsRoutingModule } from './concepts-routing.module';
   imports: [
     CommonModule,
     ConceptsRoutingModule
-  ]
+  ],
+  exports: []
 })
 export class ConceptsModule { }

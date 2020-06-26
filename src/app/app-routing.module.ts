@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'event-listing', component: EventListingComponent },
   { path: 'event-booking', component: EventBookingComponent },
   { path: 'concepts', loadChildren: () => import('./concepts/concepts.module').then(m => m.ConceptsModule) },
+  { path: 'concepts/ngrx', loadChildren: () => import('./concepts/concepts.module').then(m => m.ConceptsModule) },
   { path: '**', component: WelcomeComponent }
 ];
 

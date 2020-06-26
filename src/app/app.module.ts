@@ -16,6 +16,11 @@ import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-logi
 import { environment } from 'src/environments/environment';
 import { ResizeComponent } from './components/resize/resize.component';
 import { ResizableModule } from 'angular-resizable-element';
+import { NgrxComponent } from './concepts/ngrx/ngrx-base/ngrx.component';
+
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from './concepts/ngrx/counter.reducer';
+import { MyCounterComponent } from './concepts/ngrx/my-counter.component';
 
 // 640341226215-pop3u1drhhlovipu3v5fcrp0mc69f965.apps.googleusercontent.com   -- local
 // 640341226215-7amo9e4l6eutu5qjat23kd6lbajvtrk4.apps.googleusercontent.com   -- firbase
@@ -39,7 +44,9 @@ export function provideConfig() {
     AppComponent,
     EventListingComponent,
     EventBookingComponent,
-    ResizeComponent
+    ResizeComponent,
+    NgrxComponent,
+    MyCounterComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +59,8 @@ export function provideConfig() {
     CoreModule,
     ToastrModule.forRoot(),
     SocialLoginModule,
-    ResizableModule
+    ResizableModule,
+    StoreModule.forRoot({ count: counterReducer })
   ],
   providers: [{
     provide: AuthServiceConfig,
