@@ -15,7 +15,7 @@ import { AuthService } from 'src/app/shared/auth.service';
 export class EventListingComponent implements OnInit {
 
   getEvents$: Observable<EventModel[]>;
-  formGroup = this.fb.group({
+  formGroup = this.formBuilder.group({
     eventName: ['']
   });
   // private socialUser$: Observable<SocialUser>;
@@ -23,7 +23,7 @@ export class EventListingComponent implements OnInit {
 
   constructor(
     private jsonServerService: JsonServerService,
-    private fb: FormBuilder,
+    private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService
   ) { }
